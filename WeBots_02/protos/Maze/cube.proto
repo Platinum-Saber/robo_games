@@ -1,0 +1,32 @@
+#VRML_SIM R2022b utf8
+PROTO Cube [
+  field SFVec3f translation 0 0 0
+  field SFVec3f scale 1 1 1
+  field SFVec3f size 1 1 1  # Width, Height, Depth of the cube
+  field SFColor color 0.2 0.6 0.8
+  field SFFloat mass 1.0  # Mass of the cube in kg
+] {
+  Solid {
+    translation IS translation
+    scale IS scale
+    children [
+      Shape {
+        appearance Appearance {
+          material Material {
+            diffuseColor IS color
+          }
+        }
+        geometry Box {
+          size IS size
+        }
+      }
+    ]
+    boundingObject Box {
+      size IS size
+    }
+    physics Physics {
+      mass IS mass
+    }
+  }
+}
+

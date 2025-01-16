@@ -1,0 +1,33 @@
+#VRML_SIM R2022b utf8
+PROTO wall [
+  field SFVec3f translation 0 0 0
+  field SFVec3f scale 1 1 1   # Default scale of the wall
+  field SFVec3f size 0.1 0.1 1  # Width, Height, Depth
+  #field SFVec3f rotation 1 0 0 1.57  Width, Height, Depth, Angle
+  field SFColor color 0.5 0.5 0.5  # Default gray color
+] {
+  Solid {
+    translation IS translation
+    rotation 1 0 0 1.57
+    scale IS scale
+    children [
+      Shape {
+        appearance Appearance {
+          material Material {
+            diffuseColor IS color
+          }
+        }
+        geometry Box {
+          size IS size
+        }
+      }
+    ]
+    boundingObject Box {
+      size IS size
+    }
+    #physics Physics {
+      #mass 100.0  # Large mass for static walls
+    #}
+    locked TRUE
+  }
+}

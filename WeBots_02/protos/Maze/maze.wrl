@@ -1,0 +1,106 @@
+wall {
+  translation 0 0 0
+  scale 1 1 1
+}
+
+
+wall {
+  translation 1 0 0
+  scale 1 1 1
+}
+
+
+wall {
+  translation 2 0 0
+  scale 1 1 1
+}
+
+
+wall {
+  translation 3 0 0
+  scale 1 1 1
+}
+
+
+wall {
+  translation 4 0 0
+  scale 1 1 1
+}
+
+
+wall {
+  translation 0 0 1
+  scale 1 1 1
+}
+
+
+wall {
+  translation 4 0 1
+  scale 1 1 1
+}
+
+
+wall {
+  translation 0 0 2
+  scale 1 1 1
+}
+
+
+wall {
+  translation 1 0 2
+  scale 1 1 1
+}
+
+
+wall {
+  translation 3 0 2
+  scale 1 1 1
+}
+
+
+wall {
+  translation 4 0 2
+  scale 1 1 1
+}
+
+
+wall {
+  translation 0 0 3
+  scale 1 1 1
+}
+
+
+wall {
+  translation 4 0 3
+  scale 1 1 1
+}
+
+
+wall {
+  translation 0 0 4
+  scale 1 1 1
+}
+
+
+wall {
+  translation 1 0 4
+  scale 1 1 1
+}
+
+
+wall {
+  translation 2 0 4
+  scale 1 1 1
+}
+
+
+wall {
+  translation 3 0 4
+  scale 1 1 1
+}
+
+
+wall {
+  translation 4 0 4
+  scale 1 1 1
+}
