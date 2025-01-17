@@ -1,47 +1,24 @@
 #from my_supervisor import maze
 
-maze_size = 3
+"""
+wall types and values
+    up    = 8
+    right = 4
+    down  = 2
+    left  = 1
+all coordinates must be given as tuples (x,y)
 
-maze = [
-    "o---o---o---o---o---o---o---o---o---o---o---o---o---o---o---o---o",
-    "|                                               |               |",
-    "o   o---o---o---o---o---o---o   o---o   o   o   o   o   o   o   o",
-    "|   |                   |   |   |       |   |   |   |   |   |   |",
-    "o   o---o   o   o   o   o   o   o---o   o   o   o---o   o   o   o",
-    "|   |   |   |   |   |   |   |   |       |   |           |   |   |",
-    "o   o   o   o   o   o   o   o   o---o---o---o   o---o---o---o   o",
-    "|   |   |   |   |   |   |   |                               |   |",
-    "o   o   o   o   o   o   o   o   o---o---o---o   o---o---o   o   o",
-    "|   |       |   |   |   |   |   |                           |   |",
-    "o   o   o   o   o   o   o   o   o---o---o---o   o---o---o   o   o",
-    "|   |   |   |               |   |                           |   |",
-    "o   o   o   o   o   o   o   o   o   o---o---o   o---o---o   o   o",
-    "|   |   |   |   |   |   |   |   |                           |   |",
-    "o   o---o   o   o   o   o   o---o---o---o---o---o---o---o---o   o",
-    "|               |   |   |   |       |                       |   |",
-    "o   o---o   o   o   o   o   o   o   o---o---o---o---o---o   o   o",
-    "|   |   |   |   |   |   |   |       |                           |",
-    "o   o   o   o   o   o   o   o   o---o---o---o---o---o---o---o   o",
-    "|   |   |   |   |   |   |   |   |                           |   |",
-    "o   o   o   o   o   o   o   o   o---o---o---o   o---o---o   o   o",
-    "|   |   |   |               |   |                           |   |",
-    "o   o   o   o   o   o   o   o   o---o---o---o   o---o---o   o   o",
-    "|   |       |   |   |   |   |   |                               |",
-    "o   o   o   o   o   o   o   o   o---o---o---o   o---o---o   o   o",
-    "|   |   |   |   |   |   |       |                           |   |",
-    "o   o   o   o   o   o   o   o   o   o---o---o   o---o---o---o   o",
-    "|   |   |   |   |   |   |   |           |   |           |   |   |",
-    "o   o---o   o   o   o   o   o   o   o---o   o   o---o   o   o   o",
-    "|   |                   |   |   |       |   |   |   |   |   |   |",
-    "o   o   o---o---o---o---o---o---o---o---o   o---o   o   o   o   o",
-    "|   |                                                           |",
-    "o---o---o---o---o---o---o---o---o---o---o---o---o---o---o---o---o",
-    "o---o---o---o---o---o---o---o---o---o---o---o---o---o---o---o---o"
-]
+"""
+
+maze_size = 5
 
 color_coords = [(7,7,0),(5,0,2),(7,3,2),(8,4,2),(0,3,2)]  #red,yellow,pink,brown,green
 walls = []
 maze_vals = []
+
+robotx,roboty = 0,0
+queue = []
+neighbours = []
 
 for x in range (maze_size):
     maze_vals.append([])
@@ -60,29 +37,6 @@ def setborder():
 
 
 
-robotx,roboty = 0,0
-queue = []
-
-def maze_numbering_temp(destination):
-    changes_done = False
-    if maze_vals[destination[1]][destination[0]] == -1:
-        maze_vals[destination[1]][destination[0]] = 0
-    
-    adj_coords = [(destination[0],destination[1]+1),
-                  (destination[0]+1,destination[1]),
-                  (destination[0],destination[1]-1),
-                  (destination[0]-1,destination[1])]
-    for x,y in adj_coords:
-        print(x,y)
-        #print(maze_vals[x][y])
-        if(x<maze_size and x>-1 and y<maze_size and y>-1 and maze_vals[y][x] == -1):
-            maze_vals[y][x] = maze_vals[destination[1]][destination[0]] + 1
-            print(maze_vals[x][y])
-            changes_done = True
-            maze_numbering((x,y))
-
-    return
-
 def checkwalls(cell):
     wall_string = bin(walls[cell[1]][cell[0]])[2::].zfill(4)
     result = []
@@ -94,9 +48,10 @@ def checkwalls(cell):
 def maze_numbering(destination):
     
     maze_vals[destination[1]][destination[0]] = 0
-    cur_cell = destination
+    queue.append(destination)
 
-    while(True):
+    while(len(queue) > 0):
+        cur_cell = queue.pop(0)
         cur_cell_value = maze_vals[cur_cell[1]][cur_cell[0]]
         wall_pos = checkwalls((cur_cell))
 
@@ -112,15 +67,106 @@ def maze_numbering(destination):
                     #no walls in this direction
                     queue.append((x,y))
                     maze_vals[y][x] = cur_cell_value + 1
-        if(len(queue) == 0):
-            return
-        else:
-            cur_cell = queue.pop(0)
+
+                    printmaze()
+                    print("=============================================================")
+    return
+
+
+def addwall(cell,val):
+    walls[cell[1]][cell[0]] = val
+    mywalls = checkwalls(cell)
+    if(mywalls[0] == 1):
+        adjcell = (cell[0],cell[1]+1)   #top cell
+        if(adjcell[0]<maze_size and adjcell[0]>-1 and adjcell[1]<maze_size and adjcell[1]>-1):
+            walls[adjcell[1]][adjcell[0]] = walls[adjcell[1]][adjcell[0]] | 2
+    if(mywalls[1] == 1):
+        adjcell = (cell[0]+1,cell[1])   #right cell
+        if(adjcell[0]<maze_size and adjcell[0]>-1 and adjcell[1]<maze_size and adjcell[1]>-1):
+            walls[adjcell[1]][adjcell[0]] = walls[adjcell[1]][adjcell[0]] | 1
+    if(mywalls[2] == 1):
+        adjcell = (cell[0],cell[1]-1)   #bottom cell
+        if(adjcell[0]<maze_size and adjcell[0]>-1 and adjcell[1]<maze_size and adjcell[1]>-1):
+            walls[adjcell[1]][adjcell[0]] = walls[adjcell[1]][adjcell[0]] | 8
+    if(mywalls[3] == 1):
+        adjcell = (cell[0]-1,cell[1])   #left cell
+        if(adjcell[0]<maze_size and adjcell[0]>-1 and adjcell[1]<maze_size and adjcell[1]>-1):
+            walls[adjcell[1]][adjcell[0]] = walls[adjcell[1]][adjcell[0]] | 4
     
-    
-    
-    
+def reroute(cell):
+    queue.clear()
+    queue.append(cell)
+
+    while(len(queue) > 0):
+        neighbours.clear()
+        cur_cell = queue.pop(0)
+        cur_cell_value = maze_vals[cur_cell[1]][cur_cell[0]]
+        wall_pos = checkwalls((cur_cell))
+
+        adj_coords = [(cur_cell[0],cur_cell[1]+1),
+                    (cur_cell[0]+1,cur_cell[1]),
+                    (cur_cell[0],cur_cell[1]-1),
+                    (cur_cell[0]-1,cur_cell[1])]
+        
+        for index,(x,y) in enumerate(adj_coords ,start = 0):
+                if(x<maze_size and x>-1 and y<maze_size and y>-1):
+                    #this is inside the maze
+                    if(wall_pos[index] == 0):
+                        #no walls in this direction
+                        neighbours.append((x,y))
+        min_neighbour_val = 10000
+        for (x,y) in neighbours:
+            if(min_neighbour_val > maze_vals[y][x]):
+                min_neighbour_val = maze_vals[y][x]
+        if(cur_cell_value <= min_neighbour_val):
+            maze_vals[cur_cell[1]][cur_cell[0]] = min_neighbour_val + 1
+            for i in neighbours:
+                queue.append(i)
+
+def printmaze():
+    for y in range(maze_size-1, -1,-1):
+        for x in range(maze_size):
+            mywalls = checkwalls((x,y))
+            if(mywalls[0] == 1):
+                print(" _  ",end="")
+            else:
+                print("    ",end="")
+        print()
+        for x in range(maze_size):
+            mywalls = checkwalls((x,y))
+            if(mywalls[3] == 1):
+                print("|",end="")
+            else:
+                print(" ",end="")
+            print(maze_vals[y][x],end = " ")
+            if(mywalls[1] == 1):
+                print("|",end="")
+            else:
+                print(" ",end="")
+        print()
+        for x in range(maze_size):
+            mywalls = checkwalls((x,y))
+            if(mywalls[2] == 1):
+                print(" _  ",end="")
+            else:
+                print("    ",end="")
+        print()
+
+
+
+
 
 setborder()
-maze_numbering((0,1))
-print(maze_vals)
+addwall((1,2),6)
+maze_numbering((1,1))
+printmaze()
+
+"""
+use printmaze() to print the current configuration of the maze
+use addwall((cell),val) to add a wall when the robot detects it. cell is the (x,y) of the cell the robot is on. the val is the 
+decimal value corresponding to the walls on all 4 sides
+in the beginning use maze_numbering(destiation) to give where the robot must go. the destination is the place where the color
+is placed aka the coordinats in the color_coords list
+during traverse, if the robot discovers a new wall we need to re correct the numbering and for that use reroute(cell) after 
+adding the discoverd walls. Here the cell is the (x,y) of the robot
+"""
