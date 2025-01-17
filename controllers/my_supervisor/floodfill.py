@@ -151,13 +151,12 @@ def printmaze():
             else:
                 print("    ",end="")
         print()
-
+    print("=========================================================")
 
 
 
 
 setborder()
-addwall((1,2),6)
 maze_numbering((1,1))
 printmaze()
 
@@ -170,3 +169,9 @@ is placed aka the coordinats in the color_coords list
 during traverse, if the robot discovers a new wall we need to re correct the numbering and for that use reroute(cell) after 
 adding the discoverd walls. Here the cell is the (x,y) of the robot
 """
+addwall((1,2),6)
+addwall((2,2),3)
+reroute((2,2))
+printmaze()
+
+#done
