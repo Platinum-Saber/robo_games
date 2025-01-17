@@ -19,9 +19,6 @@ for wheelName in wheelNames:
     wheels[-1].setPosition(float('Inf'))
     wheels[-1].setVelocity(0)
 
-encoder = robot.getDevice('bwdL_encoder')
-encoder.enable(100)
-
 prevError = 0
 errorInteg = 0
 # - perform simulation steps until Webots is stopping the controller
