@@ -1,5 +1,12 @@
 """encoder_drive controller."""
 
+"""use move(dir) to move the robot. the parameter to be passed is the direction which can be f,r,l,b
+f = 'forward'
+r = 'right'
+l = 'left'
+b = 'back'
+"""
+
 from controller import Robot
 from math import *
 
