@@ -184,8 +184,6 @@ def setsize(num):
     maze_size = num
 
 
-    
-
 setsize(5)
 print(maze_size)
 setborder()
@@ -205,4 +203,4 @@ addwall((1,2),6)
 addwall((2,2),3)
 reroute((2,2))
 printmaze()
-print(find_dir((2,1)))
+print(find_dir((4,4)))
