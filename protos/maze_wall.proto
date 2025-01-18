@@ -1,5 +1,4 @@
 #VRML_SIM R2023b utf8
-# Describe the functionality of your PROTO here.
 # template language: javascript
 
 PROTO maze_wall [
@@ -7,8 +6,7 @@ PROTO maze_wall [
   field SFRotation rotation 0 0 1 0
   field SFVec3f size 0.25 0.01 0.1   
   field SFString name "maze_wall"
-  field SFBool locked TRUE
-  field SFColor baseColor 0.5 0.5 0.5 # any color
+  field SFColor baseColor 1 1 1
 ]
 {
   Solid {
@@ -28,6 +26,6 @@ PROTO maze_wall [
     ]
     name IS name
     boundingObject USE wall_shape
-    locked IS locked
+    locked TRUE
   }
 }

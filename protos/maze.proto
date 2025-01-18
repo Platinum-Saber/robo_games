@@ -1,0 +1,934 @@
+#VRML_SIM R2023b utf8
+# template language: javascript
+
+PROTO maze [
+    field SFVec3f translation 0 0 0
+    field SFRotation rotation 0 0 1 0
+    field MFNode children [
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 0.125 2.625 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 0.375 2.625 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 0.625 2.625 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 0.875 2.625 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 1.125 2.625 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 1.375 2.625 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 1.625 2.625 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 1.875 2.625 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 2.125 2.625 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 2.375 2.625 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 0.0 2.5 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 0.25 2.5 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 1.75 2.5 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 2.5 2.5 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 0.625 2.375 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 0.875 2.375 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 1.125 2.375 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 1.375 2.375 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 2.125 2.375 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 0.0 2.25 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 0.5 2.25 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 1.0 2.25 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 1.75 2.25 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 2.0 2.25 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 2.5 2.25 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 0.375 2.125 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 1.375 2.125 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 2.375 2.125 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 0.0 2.0 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 0.25 2.0 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 0.5 2.0 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 0.75 2.0 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 1.25 2.0 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 2.0 2.0 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 2.5 2.0 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 0.875 1.875 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 1.125 1.875 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 1.375 1.875 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 1.625 1.875 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 1.78875 1.875 0.05
+        size 0.0775 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 1.86625 1.875 0.05
+        size 0.0775 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 1.9549999999999998 1.875 0.05
+        size 0.1 0.01 0.1
+        baseColor 1 0 0
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 2.375 1.875 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 0.0 1.75 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 0.25 1.75 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 0.75 1.75 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 1.25 1.75 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 2.0 1.75 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 2.5 1.75 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 0.375 1.625 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 1.625 1.625 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 0.0 1.5 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 0.25 1.5 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 0.75 1.5 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 1.0 1.5 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 1.5 1.5 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 2.0 1.5 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 2.25 1.5 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 2.5 1.5 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 1.125 1.375 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 1.375 1.375 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 0.0 1.25 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 0.25 1.25 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 0.5 1.25 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 0.75 1.25 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 1.0 1.25 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 1.75 1.25 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 2.25 1.25 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 2.5 1.25 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 0.625 1.125 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 1.375 1.125 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 1.625 1.125 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 2.03875 1.125 0.05
+        size 0.0775 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 2.11625 1.125 0.05
+        size 0.0775 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 2.205 1.125 0.05
+        size 0.1 0.01 0.1
+        baseColor 0.6470588235294118 0.4117647058823529 0.11764705882352941
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 2.375 1.125 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 0.0 1.0 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 0.25 1.0 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 0.5 1.0 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 1.0 1.0 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 1.5 1.0 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 1.75 1.0 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 2.5 1.0 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 0.03875 0.875 0.05
+        size 0.0775 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 0.1275 0.875 0.05
+        size 0.1 0.01 0.1
+        baseColor 0 1 0
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 0.21625 0.875 0.05
+        size 0.0775 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 0.875 0.875 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 1.125 0.875 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 1.375 0.875 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 1.8 0.875 0.05
+        size 0.1 0.01 0.1
+        baseColor 1 0 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 1.8887500000000002 0.875 0.05
+        size 0.0775 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 1.96625 0.875 0.05
+        size 0.0775 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 2.125 0.875 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 0.0 0.75 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 0.5 0.75 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 1.5 0.75 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 2.5 0.75 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 0.375 0.625 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 0.625 0.625 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 0.875 0.625 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 1.125 0.625 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 1.625 0.625 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 1.875 0.625 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 2.375 0.625 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 0.0 0.5 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 0.5 0.5 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 1.0 0.5 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 1.25 0.5 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 1.5 0.5 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 2.0 0.5 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 2.25 0.5 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 2.5 0.5 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 0.125 0.375 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 0.0 0.25 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 0.75 0.25 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 1.25 0.25 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 1.5 0.25 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 1.75 0.25 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 1.57
+        translation 2.5 0.25 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 0.125 0.125 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 0.375 0.125 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 0.625 0.125 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 0.875 0.125 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 1.125 0.125 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 1.3 0.125 0.05
+        size 0.1 0.01 0.1
+        baseColor 1 1 0
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 1.3887500000000002 0.125 0.05
+        size 0.0775 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 1.46625 0.125 0.05
+        size 0.0775 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 1.625 0.125 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 1.875 0.125 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 2.125 0.125 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    maze_wall  {
+        rotation 0 0 1 0
+        translation 2.375 0.125 0.05
+        size 0.26 0.01 0.1
+        baseColor 1 1 1
+    }
+
+    ]
+]
+{
+  Pose {
+    translation IS translation
+    rotation IS rotation
+    children IS children
+  }
+}
