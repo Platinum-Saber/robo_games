@@ -10,7 +10,7 @@ all coordinates must be given as tuples (x,y)
 
 """
 
-maze_size = 5
+maze_size = 10
 
 color_coords = [(7,7,0),(5,0,2),(7,3,2),(8,4,2),(0,3,2)]  #red,yellow,pink,brown,green
 walls = []
@@ -68,8 +68,6 @@ def maze_numbering(destination):
                     queue.append((x,y))
                     maze_vals[y][x] = cur_cell_value + 1
 
-                    printmaze()
-                    print("=============================================================")
     return
 
 
@@ -154,8 +152,42 @@ def printmaze():
     print("=========================================================")
 
 
+def find_dir(cur_cell):
+    wall_pos = checkwalls((cur_cell))
+    adj_coords = [(cur_cell[0],cur_cell[1]+1),
+                    (cur_cell[0]+1,cur_cell[1]),
+                    (cur_cell[0],cur_cell[1]-1),
+                    (cur_cell[0]-1,cur_cell[1])]
+    
+    cur_cell_value = maze_vals[cur_cell[1]][cur_cell[0]]
+
+    for index,(x,y) in enumerate(adj_coords ,start = 0):
+            if(x<maze_size and x>-1 and y<maze_size and y>-1):
+                #this is inside the maze
+                if(wall_pos[index] == 0):
+                    #no walls in this direction
+                    adjcell_val = maze_vals[y][x]
+                    if(adjcell_val < cur_cell_value):
+                        direction = index
+    match direction:
+        case 0:
+            return 'up'
+        case 1:
+            return 'right'
+        case 2:
+            return 'down'
+        case 3:
+            return 'left'
+
+def setsize(num):
+    global maze_size
+    maze_size = num
 
 
+    
+
+setsize(5)
+print(maze_size)
 setborder()
 maze_numbering((1,1))
 printmaze()
@@ -173,5 +205,4 @@ addwall((1,2),6)
 addwall((2,2),3)
 reroute((2,2))
 printmaze()
-
-#done
+print(find_dir((2,1)))
