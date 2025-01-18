@@ -1,9 +1,11 @@
 ### Protos
 1. `maze_wall.proto`
-A `Solid` node. Describes the basic structure of a wall.
 
-2. `maze.proto`
-A `Pose` node. Contains `maze_wall`s as children, translated, scaled, rotated, and colored appropriately, forming the maze.
+   A `Solid` node. Describes the basic structure of a wall.
+
+3. `maze.proto`
+
+   A `Pose` node. Contains `maze_wall`s as children, translated, scaled, rotated, and colored appropriately, forming the maze.
 
 ### Procedure
 1. Start with an empty `.wbt` file.
