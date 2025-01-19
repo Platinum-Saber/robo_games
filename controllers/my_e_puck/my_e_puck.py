@@ -10,6 +10,11 @@ camera = Camera('camera')
 camera.enable(timestep)
 
 R = G = B = (0, 0, 0)
+flag = True
+
+def debug(flag, arg):
+    if flag:
+        print(arg)
 
 def delay(seconds):
     startTime = suhan.getTime()
@@ -21,16 +26,26 @@ def getUnitVector(vector):
     return (vector[0] / magnitude, vector[1] / magnitude, vector[2] / magnitude)
 
 def estimateColor2(rawColorVector):
-    redEstimate = rawColorVector[0] * R[0] + rawColorVector[1] * R[1] + rawColorVector[2] * R[2]
-    greenEstimate = rawColorVector[0] * G[0] + rawColorVector[1] * G[1] + rawColorVector[2] * G[2]
-    blueEstimate = rawColorVector[0] * B[0] + rawColorVector[1] * B[1] + rawColorVector[2] * B[2]
+    R_ = getUnitVector(R)
+    G_ = getUnitVector(G)
+    B_ = getUnitVector(B)
+    debug(flag, "========Estimated Color 2==========")
+    debug(flag, f"Estimating color: {rawColorVector}")
+    redEstimate = rawColorVector[0] * R_[0] + rawColorVector[1] * R_[1] + rawColorVector[2] * R_[2]
+    greenEstimate = rawColorVector[0] * G_[0] + rawColorVector[1] * G_[1] + rawColorVector[2] * G_[2]
+    blueEstimate = rawColorVector[0] * B_[0] + rawColorVector[1] * B_[1] + rawColorVector[2] * B_[2]
     
+    debug(flag, f"Estimation: {redEstimate}, {greenEstimate}, {blueEstimate}")
     return (redEstimate, greenEstimate, blueEstimate)
 
 def estimateColor1(rawColorVector):
+    debug(flag, "========Estimated Color 1==========")
+    debug(flag, f"Estimating color: {rawColorVector}")
     redDifference = (rawColorVector[0] - R[0], rawColorVector[1] - R[1], rawColorVector[2] - R[2])
     greenDifference = (rawColorVector[0] - G[0], rawColorVector[1] - G[1], rawColorVector[2] - G[2])
     blueDifference = (rawColorVector[0] - B[0], rawColorVector[1] - B[1], rawColorVector[2] - B[2])
+
+    debug(flag, f"Difference: {redDifference}, {greenDifference}, {blueDifference}")
     
     redDistance = math.sqrt(math.pow(redDifference[0], 2) + math.pow(redDifference[1], 2) + math.pow(redDifference[2], 2))
     greenDistance = math.sqrt(math.pow(greenDifference[0], 2) + math.pow(greenDifference[1], 2) + math.pow(greenDifference[2], 2))
@@ -43,6 +58,7 @@ def estimateColor1(rawColorVector):
     return (redEstimate, greenEstimate, blueEstimate)
 
 def calibrateColor():
+    global R, G, B
     print ("PLACE ON RED")
     delay(3)
     print ("STARTING CALIBRATION OF RED")
@@ -89,4 +105,6 @@ def getAverage():
 calibrateColor()
 
 while (suhan.step(timestep) != -1):
-    pass
+    raw_color = getAverage()
+    print("est_color_1",estimateColor1(raw_color))
+    print("est_color2",estimateColor2(raw_color))
