@@ -1,5 +1,6 @@
 from drive import *
 from floodfill import *
+from camera import * 
 
 
 setsize(10)
@@ -14,9 +15,11 @@ setborder()
 #addwall((5,0),8)
 #addwall((6,0),4)
 #addwall((6,1),4)
+camera_1 = robot.getDevice('camera')
+camera_1.enable(timestep) 
 
 #for colour in color_coords:
-maze_numbering((8,1))
+maze_numbering((7,1))
 printmaze()
 while(maze_vals[robot_coords[1]][robot_coords[0]] != 0):
     next_dir = find_dir((robot_coords[0],robot_coords[1]))
@@ -37,7 +40,10 @@ while(maze_vals[robot_coords[1]][robot_coords[0]] != 0):
         result = 0
     
     printmaze()
+    getColor(camera_1)
     print(robot_coords)
+
+
 
 
 # 
