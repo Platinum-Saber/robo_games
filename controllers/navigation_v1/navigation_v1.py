@@ -22,13 +22,20 @@ while(maze_vals[robot_coords[1]][robot_coords[0]] != 0):
     next_dir = find_dir((robot_coords[0],robot_coords[1]))
     turn_calc = robot_coords[2] - next_dir
     if(turn_calc == 0):
-        move(f)
+        result = move(f)
     elif(turn_calc == 1):
         move(l)
+        result = move(f)
     if(turn_calc == -1):
         move(r)
+        result = move(f)
     elif(abs(turn_calc) == 2):
         move(b)
+    
+    if(result != 0):
+        move(b,result)
+        result = 0
+    
     printmaze()
     print(robot_coords)
 

@@ -99,7 +99,7 @@ def update_xy(dir):
 
 
 def move(dir, linear_dist = movecell_dist, turn_ang = turnright_ang):
-    #print(f"Direction: {dir}")
+    print(f"Direction: {dir}")
 
     global robot_pose
 
@@ -148,16 +148,15 @@ def move(dir, linear_dist = movecell_dist, turn_ang = turnright_ang):
                     #print(robot_pose)
                     #delay(2)
                     update_xy(f)
-                    return
+                    return 0
             else:
                 left_motor.setVelocity(0)
                 right_motor.setVelocity(0)
                 moveback_dist = abs(robot_pose[0])
                 robot_pose = [0,0,0]
-                move(b,moveback_dist,turn_ang)
                 addwall((robot_coords[0],robot_coords[1]),1<<(3-robot_coords[2]))
                 reroute((robot_coords[0],robot_coords[1]))
-                return
+                return moveback_dist
         elif(dir == 'right'):
     
             if(robot_pose[2] < turn_ang):
@@ -189,7 +188,7 @@ def move(dir, linear_dist = movecell_dist, turn_ang = turnright_ang):
                 robot_coords[2] = (robot_coords[2] + 3) % 4
                 return
         elif(dir == 'back'):
-    
+            print('going back')
             if(robot_pose[0] > -linear_dist):
                 left_motor.setVelocity(-max_speed)
                 right_motor.setVelocity(-max_speed)
