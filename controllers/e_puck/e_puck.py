@@ -6,48 +6,48 @@ timestep = int(robot.getBasicTimeStep())
 camera = robot.getDevice('camera')
 camera.enable(timestep)
 
-colors = {
-    "Red" : {
-        "R" : 255,
-        "G" : 0,
-        "B" : 0
-    },
-    "Brown" : {
-        # "R" : 165,
-        # "G" : 105,
-        # "B" : 30  
-        "R" : 200,
-        "G" : 150,
-        "B" : 50
-    },
-    "Green" : {
-        "R" : 0,
-        "G" : 255,
-        "B" : 0
-    },
-    "Yellow" : {
-        "R" : 255,
-        "G" : 255,
-        "B" : 0
-    },
-    "Pink" : {
-        "R" : 255,
-        "G" : 0,
-        "B" : 255
-    },
-    "White" : {
-        "R" : 255,
-        "G" : 255,
-        "B" : 255
-    },
-    "Black" : {
-        "R" : 0,
-        "G" : 0,
-        "B" : 0
+def getColor(image, x, y):
+    colors = {
+        "Red" : {
+            "R" : 255,
+            "G" : 0,
+            "B" : 0
+        },
+        "Brown" : {
+            # "R" : 165,
+            # "G" : 105,
+            # "B" : 30  
+            "R" : 200,
+            "G" : 150,
+            "B" : 50
+        },
+        "Green" : {
+            "R" : 0,
+            "G" : 255,
+            "B" : 0
+        },
+        "Yellow" : {
+            "R" : 255,
+            "G" : 255,
+            "B" : 0
+        },
+        "Pink" : {
+            "R" : 255,
+            "G" : 0,
+            "B" : 255
+        },
+        "White" : {
+            "R" : 255,
+            "G" : 255,
+            "B" : 255
+        },
+        "Black" : {
+            "R" : 0,
+            "G" : 0,
+            "B" : 0
+        }
     }
-}
 
-while robot.step(timestep) != -1:
     # Retrieve the camera image
     image = camera.getImage()
     # Process the image data
@@ -64,11 +64,6 @@ while robot.step(timestep) != -1:
             #print(f"green_pixel is {camera.imageGetGreen(image, width, i+width//2, j+height//2)}")
             blue += camera.imageGetBlue(image, width, i+width//2, j+height//2)
             #print(f"blue_pixel is {camera.imageGetBlue(image, width, i+width//2, j+height//2)}")
-    
-    print(f"red is {red/81}")
-    print(f"green is {green/81}")
-    print(f"blue is {blue/81}")
-    print("=====================")
 
     red_avg = red/81
     green_avg = green/81
@@ -77,4 +72,4 @@ while robot.step(timestep) != -1:
     for key, value in colors.items():
         if abs(red_avg - value["R"]) < 40  and abs(green_avg - value["G"]) < 40 and abs(blue_avg - value["B"]) < 40:
             print(f"Color is {key}")
-            break
+            return key
