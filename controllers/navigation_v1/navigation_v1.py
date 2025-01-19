@@ -16,7 +16,7 @@ setborder()
 #addwall((6,1),4)
 
 #for colour in color_coords:
-maze_numbering((7,2))
+maze_numbering((8,1))
 printmaze()
 while(maze_vals[robot_coords[1]][robot_coords[0]] != 0):
     next_dir = find_dir((robot_coords[0],robot_coords[1]))
