@@ -16,7 +16,7 @@ color_coords = [(7,7,0),(5,0,2),(7,3,2),(8,4,2),(0,3,2)]  #red,yellow,pink,brown
 walls = []
 maze_vals = []
 
-robotx,roboty = 0,0
+
 queue = []
 neighbours = []
 
@@ -70,26 +70,6 @@ def maze_numbering(destination):
 
     return
 
-
-def addwall(cell,val):
-    walls[cell[1]][cell[0]] = val
-    mywalls = checkwalls(cell)
-    if(mywalls[0] == 1):
-        adjcell = (cell[0],cell[1]+1)   #top cell
-        if(adjcell[0]<maze_size and adjcell[0]>-1 and adjcell[1]<maze_size and adjcell[1]>-1):
-            walls[adjcell[1]][adjcell[0]] = walls[adjcell[1]][adjcell[0]] | 2
-    if(mywalls[1] == 1):
-        adjcell = (cell[0]+1,cell[1])   #right cell
-        if(adjcell[0]<maze_size and adjcell[0]>-1 and adjcell[1]<maze_size and adjcell[1]>-1):
-            walls[adjcell[1]][adjcell[0]] = walls[adjcell[1]][adjcell[0]] | 1
-    if(mywalls[2] == 1):
-        adjcell = (cell[0],cell[1]-1)   #bottom cell
-        if(adjcell[0]<maze_size and adjcell[0]>-1 and adjcell[1]<maze_size and adjcell[1]>-1):
-            walls[adjcell[1]][adjcell[0]] = walls[adjcell[1]][adjcell[0]] | 8
-    if(mywalls[3] == 1):
-        adjcell = (cell[0]-1,cell[1])   #left cell
-        if(adjcell[0]<maze_size and adjcell[0]>-1 and adjcell[1]<maze_size and adjcell[1]>-1):
-            walls[adjcell[1]][adjcell[0]] = walls[adjcell[1]][adjcell[0]] | 4
     
 def reroute(cell):
     queue.clear()
@@ -120,6 +100,27 @@ def reroute(cell):
             maze_vals[cur_cell[1]][cur_cell[0]] = min_neighbour_val + 1
             for i in neighbours:
                 queue.append(i)
+
+def addwall(cell,val):
+    walls[cell[1]][cell[0]] = walls[cell[1]][cell[0]] | val
+    mywalls = checkwalls(cell)
+    if(mywalls[0] == 1):
+        adjcell = (cell[0],cell[1]+1)   #top cell
+        if(adjcell[0]<maze_size and adjcell[0]>-1 and adjcell[1]<maze_size and adjcell[1]>-1):
+            walls[adjcell[1]][adjcell[0]] = walls[adjcell[1]][adjcell[0]] | 2
+    if(mywalls[1] == 1):
+        adjcell = (cell[0]+1,cell[1])   #right cell
+        if(adjcell[0]<maze_size and adjcell[0]>-1 and adjcell[1]<maze_size and adjcell[1]>-1):
+            walls[adjcell[1]][adjcell[0]] = walls[adjcell[1]][adjcell[0]] | 1
+    if(mywalls[2] == 1):
+        adjcell = (cell[0],cell[1]-1)   #bottom cell
+        if(adjcell[0]<maze_size and adjcell[0]>-1 and adjcell[1]<maze_size and adjcell[1]>-1):
+            walls[adjcell[1]][adjcell[0]] = walls[adjcell[1]][adjcell[0]] | 8
+    if(mywalls[3] == 1):
+        adjcell = (cell[0]-1,cell[1])   #left cell
+        if(adjcell[0]<maze_size and adjcell[0]>-1 and adjcell[1]<maze_size and adjcell[1]>-1):
+            walls[adjcell[1]][adjcell[0]] = walls[adjcell[1]][adjcell[0]] | 4
+
 
 def printmaze():
     for y in range(maze_size-1, -1,-1):
@@ -169,28 +170,27 @@ def find_dir(cur_cell):
                     adjcell_val = maze_vals[y][x]
                     if(adjcell_val < cur_cell_value):
                         direction = index
-    match direction:
-        case 0:
-            return 'up'
-        case 1:
-            return 'right'
-        case 2:
-            return 'down'
-        case 3:
-            return 'left'
+    return(direction)
+    #match direction:
+    #    case 0:
+    #        return 'up'
+    #    case 1:
+    #        return 'right'
+    #    case 2:
+    #        return 'down'
+    #    case 3:
+    #        return 'left'
 
 def setsize(num):
     global maze_size
     maze_size = num
 
 
-    
-
-setsize(5)
-print(maze_size)
-setborder()
-maze_numbering((1,1))
-printmaze()
+#setsize(5)
+#print(maze_size)
+#setborder()
+#maze_numbering((1,1))
+#printmaze()
 
 """
 use printmaze() to print the current configuration of the maze
@@ -201,8 +201,8 @@ is placed aka the coordinats in the color_coords list
 during traverse, if the robot discovers a new wall we need to re correct the numbering and for that use reroute(cell) after 
 adding the discoverd walls. Here the cell is the (x,y) of the robot
 """
-addwall((1,2),6)
-addwall((2,2),3)
-reroute((2,2))
-printmaze()
-print(find_dir((2,1)))
+#addwall((1,2),6)
+#addwall((2,2),3)
+#reroute((2,2))
+#printmaze()
+#print(find_dir((4,4)))
