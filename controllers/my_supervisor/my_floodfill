@@ -1,0 +1,103 @@
+mazeSize = 10
+actualMaze = [
+    "o---o---o---o---o---o---o---o---o---o---o",
+    "|   |                       |           |",
+    "o   o   o---o---o---o---o   o   o---o   o",
+    "|       |       |           |   |       |",
+    "o   o---o   o   o   o---o   o   o   o---o",
+    "|   |   |   |       |           |       |",
+    "o   o   o   o---o---o---o---o--Ro   o---o",
+    "|   |       |       |           |       |",
+    "o   o---o   o   o   o   o---o   o   o   o",
+    "|   |       |   |       |       |   |   |",
+    "o   o   o   o   o---o---o   o   o   o   o",
+    "|   |   |   |   |           |       |   |",
+    "o   o   o---o   o   o---o---o   o--Bo---o",
+    "|   |   |       |       |   |           |",
+    "o-G-o   o   o---o---o---o   oP--o---o   o",
+    "|       |               |               |",
+    "o   o---o---o---o---o   o---o---o   o---o",
+    "|       |       |   |   |       |   |   |",
+    "o---o   o   o   o   o   o   o   o   o   o",
+    "|           |       |   |   |           |",
+    "o---o---o---o---o---oY--o---o---o---o---o"
+]
+openMaze = []
+
+openMaze.append([1] + [1, 1] * mazeSize)
+for i in range(mazeSize - 1):
+    openMaze.append([1] + [0, 0] * mazeSize)
+    openMaze.append([1] + [0, 1] * mazeSize)
+openMaze.append([1] + [0, 1] * mazeSize)
+openMaze.append([1] + [1, 1] * mazeSize)
+
+def floodfill(destination):
+    destinationX, destinationY = destination
+    queue = [destination]
+    manhattanDistanceMatrix = [[-1 for i in range(mazeSize)] for j in range(mazeSize)]
+    manhattanDistanceMatrix[destinationY][destinationX] = 0
+    
+    while len(queue) > 0:
+        currentX, currentY = queue.pop(0)
+        currentManhattanDistance = manhattanDistanceMatrix[currentY][currentX]
+        
+        openMazeX, openMazeY = 2 * currentX + 1, 2 * currentY + 1
+        
+        if (currentX > 0) and (openMaze[openMazeY][openMazeX - 1] == 0) and (manhattanDistanceMatrix[currentY][currentX - 1] == -1):
+            queue.append((currentX - 1, currentY))
+            manhattanDistanceMatrix[currentY][currentX - 1] = currentManhattanDistance + 1
+        if (currentX < mazeSize - 1) and (openMaze[openMazeY][openMazeX + 1] == 0) and (manhattanDistanceMatrix[currentY][currentX + 1] == -1):
+            queue.append((currentX + 1, currentY))
+            manhattanDistanceMatrix[currentY][currentX + 1] = currentManhattanDistance + 1
+        if (currentY > 0) and (openMaze[openMazeY - 1][openMazeX] == 0) and (manhattanDistanceMatrix[currentY - 1][currentX] == -1):
+            queue.append((currentX, currentY - 1))
+            manhattanDistanceMatrix[currentY - 1][currentX] = currentManhattanDistance + 1
+        if (currentY < mazeSize - 1) and (openMaze[openMazeY + 1][openMazeX] == 0) and (manhattanDistanceMatrix[currentY + 1][currentX] == -1):
+            queue.append((currentX, currentY + 1))
+            manhattanDistanceMatrix[currentY + 1][currentX] = currentManhattanDistance + 1
+            
+    return manhattanDistanceMatrix
+
+def nextCell(currentCell, destination):
+    currentX, currentY = currentCell
+    openMazeX, openMazeY = 2 * currentX + 1, 2 * currentY + 1
+    actualMazeX, actualMazeY = 4 * currentX + 2, 2 * currentY + 1
+    
+    openMaze[openMazeY][openMazeX - 1] = 1 if actualMaze[actualMazeY][actualMazeX - 2] == "|" else 0
+    openMaze[openMazeY][openMazeX + 1] = 1 if actualMaze[actualMazeY][actualMazeX + 2] == "|" else 0
+    openMaze[openMazeY - 1][openMazeX] = 0 if actualMaze[actualMazeY - 1][actualMazeX] == " " else 1
+    openMaze[openMazeY + 1][openMazeX] = 0 if actualMaze[actualMazeY + 1][actualMazeX] == " " else 1
+    
+    manhattanDistanceMatrix = floodfill(destination)
+    # printMatrix(manhattanDistanceMatrix)
+    
+    currentManhattanDistance = manhattanDistanceMatrix[currentY][currentX]
+    
+    if (openMaze[openMazeY][openMazeX - 1] == 0) and (manhattanDistanceMatrix[currentY][currentX - 1] == currentManhattanDistance - 1):
+        return ((currentX - 1, currentY))
+    if (openMaze[openMazeY][openMazeX + 1] == 0) and (manhattanDistanceMatrix[currentY][currentX + 1] == currentManhattanDistance - 1):
+        return ((currentX + 1, currentY))
+    if (openMaze[openMazeY - 1][openMazeX] == 0) and (manhattanDistanceMatrix[currentY - 1][currentX] == currentManhattanDistance - 1):
+        return ((currentX, currentY - 1))
+    if (openMaze[openMazeY + 1][openMazeX] == 0) and (manhattanDistanceMatrix[currentY + 1][currentX] == currentManhattanDistance - 1):
+        return ((currentX, currentY + 1))
+
+def printMatrix(matrix):
+    for row in matrix:
+        line = ""
+        for num in row:
+            line += str(num).ljust(2) + " "
+        print (line)
+
+currentCell = (0, 9)
+
+while True:
+    currentX, currentY = currentCell
+    openMaze[2 * currentY + 1][2 * currentX + 1] = 9
+    if (currentCell == (3, 4)):
+        break
+    print ("NOW IN ", currentCell)
+    currentCell = nextCell(currentCell, (3, 4))
+    print ("MOVED TO ", currentCell)
+    
+printMatrix(openMaze)
