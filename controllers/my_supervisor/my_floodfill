@@ -28,7 +28,7 @@ openMaze.append([1] + [1, 1] * mazeSize)
 for i in range(mazeSize - 1):
     openMaze.append([1] + [0, 0] * mazeSize)
     openMaze.append([1] + [0, 1] * mazeSize)
-openMaze.append([1] + [0, 1] * mazeSize)
+openMaze.append([1] + [0, 0] * mazeSize)
 openMaze.append([1] + [1, 1] * mazeSize)
 
 def floodfill(destination):
@@ -63,14 +63,7 @@ def nextCell(currentCell, destination):
     openMazeX, openMazeY = 2 * currentX + 1, 2 * currentY + 1
     actualMazeX, actualMazeY = 4 * currentX + 2, 2 * currentY + 1
     
-    openMaze[openMazeY][openMazeX - 1] = 1 if actualMaze[actualMazeY][actualMazeX - 2] == "|" else 0
-    openMaze[openMazeY][openMazeX + 1] = 1 if actualMaze[actualMazeY][actualMazeX + 2] == "|" else 0
-    openMaze[openMazeY - 1][openMazeX] = 0 if actualMaze[actualMazeY - 1][actualMazeX] == " " else 1
-    openMaze[openMazeY + 1][openMazeX] = 0 if actualMaze[actualMazeY + 1][actualMazeX] == " " else 1
-    
     manhattanDistanceMatrix = floodfill(destination)
-    # printMatrix(manhattanDistanceMatrix)
-    
     currentManhattanDistance = manhattanDistanceMatrix[currentY][currentX]
     
     if (openMaze[openMazeY][openMazeX - 1] == 0) and (manhattanDistanceMatrix[currentY][currentX - 1] == currentManhattanDistance - 1):
@@ -89,15 +82,88 @@ def printMatrix(matrix):
             line += str(num).ljust(2) + " "
         print (line)
 
-currentCell = (0, 9)
+N = 0
+E = 1
+S = 2
+W = 3
+
+def turn(fromDirection, toDirection):
+    if fromDirection == toDirection:
+        print ("NO TURN NEEDED")
+    elif toDirection == (fromDirection + 1) % 4:
+        print ("TURN RIGHT ONCE")
+    elif toDirection == (fromDirection - 1) % 4:
+        print ("TURN LEFT ONCE")
+    elif toDirection == (fromDirection + 2) % 4:
+        print ("TURN RIGHT/LEFT TWICE")
+    # print ("NOW VEHICLE IS FACING THE SAME DIRECTION AS THE REQUIRED DIRECTION. CAN JUST MOVE FORWARD TO GO TO REQUIRED LOCATION.")
+
+def getCellDirection(currentCell, nextCell):
+    currentX, currentY = currentCell
+    nextX, nextY = nextCell
+    
+    if (nextX == currentX - 1) and (nextY == currentY):
+        return W
+    elif (nextX == currentX + 1) and (nextY == currentY):
+        return E
+    elif (nextY == currentY - 1) and (nextX == currentX):
+        return N
+    elif (nextY == currentY + 1) and (nextX == currentX):
+        return S
+        
+def getWallCoords(currentCell, direction):
+    currentX, currentY = currentCell
+    openMazeX, openMazeY = 2 * currentX + 1, 2 * currentY + 1
+    actualMazeX, actualMazeY = 4 * currentX + 2, 2 * currentY + 1
+    
+    if direction == N:
+        return [(openMazeX, openMazeY - 1), (actualMazeX, actualMazeY - 1)]
+    elif direction == E:
+        return [(openMazeX + 1, openMazeY), (actualMazeX + 2, actualMazeY)]
+    elif direction == S:
+        return [(openMazeX, openMazeY + 1), (actualMazeX, actualMazeY + 1)]
+    elif direction == W:
+        return [(openMazeX - 1, openMazeY), (actualMazeX - 2, actualMazeY)]
+
+fromCell = (0, 9)
+destination = (3, 4)
+direction = N
 
 while True:
-    currentX, currentY = currentCell
+    currentX, currentY = fromCell
     openMaze[2 * currentY + 1][2 * currentX + 1] = 9
-    if (currentCell == (3, 4)):
+    if (fromCell == destination):
+        print ("REACHED.")
         break
-    print ("NOW IN ", currentCell)
-    currentCell = nextCell(currentCell, (3, 4))
-    print ("MOVED TO ", currentCell)
+    toCell = nextCell(fromCell, destination)
+    print ("NOW IN", fromCell, "TRYING TO GO TO", toCell)
+    toDirection = getCellDirection(fromCell, toCell)
+    # print ("TRYING TO GO TO", toCell, ", toDirection", toDirection)
+    turn(direction, toDirection)
+    direction = toDirection
     
-printMatrix(openMaze)
+    distanceMoved = 0
+    
+    while distanceMoved < 0.25:
+        print ("MOVING FORWARD")
+        # keep updating distance with encoders
+        
+        wallCoords = getWallCoords(fromCell, direction)
+        # the following simulates reading IR sensors
+        irSensorReading = actualMaze[wallCoords[1][1]][wallCoords[1][0]]
+        
+        if irSensorReading != " ": # there is a wall.
+            # update openMaze
+            print ("WALL FOUND")
+            openMaze[wallCoords[0][1]][wallCoords[0][0]] = 1
+            # reverse. basically move backwards the same distance that would have been moved forward at this point.
+            print ("REVERSED")
+            # do not update fromcell because are still there.
+            break
+        else:
+            # this is only needed to simulate the encoder readings here. otherwise this would be updated within the loop and is not necessary
+            distanceMoved = 0.26
+    else:
+        # we successfully moved to the next cell
+        fromCell = toCell
+        print ("MOVED TO ", toCell)
