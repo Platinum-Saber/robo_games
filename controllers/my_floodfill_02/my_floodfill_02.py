@@ -1,5 +1,7 @@
 import math
+from camera import *
 from controller import Robot
+from controller import Camera
 
 # start = (input("Enter the starting cell X coord: "), input("Enter the starting cell Y coord: "))
 start = (4, 5)
@@ -10,6 +12,8 @@ brown_cell = (8, 6)
 green_cell = (2, 6)
 
 dest_coords = [start, red_cell, yellow_cell, pink_cell, brown_cell, green_cell]
+
+
 
 # class PIDController:
 #     def __init__(self, K_P, K_I, K_D):
@@ -254,13 +258,17 @@ def stepAndUpdatePose():
 
 linear_dist = 256
 
+camera_1 = suhan.getDevice('camera')
+camera_1.enable(timestep)
+
+
 for dest in range(len(dest_coords)-1):
     fromCell = dest_coords[dest]
     destination = dest_coords[dest+1]
     
     while stepAndUpdatePose() != -1:
         currentX, currentY = fromCell
-        
+        getColor(camera_1)
         actualMazeX, actualMazeY = 4 * currentX + 2, 2 * currentY + 1
         string = actualMaze[actualMazeY]
         actualMaze[actualMazeY] = string[:actualMazeX] + "X" + string[actualMazeX + 1:]
