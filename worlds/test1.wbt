@@ -15,15 +15,15 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.5366331864469536 -0.5263193073705552 -0.6595550089967993 4.269028272516174
-  position 0.998416344611513 0.6385861432046396 3.5023813673180104
+  orientation 0.41442137348868385 -0.4049236845156717 -0.81504094063673 4.4866230927199435
+  position 1.261683617475936 -2.5195703900048514 5.792916117632808
 }
 TexturedBackground {
 }
 TexturedBackgroundLight {
 }
 RectangleArena {
-  translation 0.3 0.2 0
+  translation 0.3 0.225 0
   floorSize 7.5 7.5
   floorAppearance PBRAppearance {
     baseColor 0 0 0
@@ -31,18 +31,29 @@ RectangleArena {
     metalness 0
   }
 }
+maze_wall {
+  translation 0.625 1.1275 0.05
+  size 0.1 0.005 0.1
+  name "maze_wall(131)"
+}
 Robot {
   name "robot(1)"
   controller "my_supervisor"
   supervisor TRUE
 }
 E-puck {
-  hidden position_0_0 1570.0131361469819
-  hidden position_0_1 1471.455347859101
-  hidden rotation_1 0 -1 0 0.7831906479147408
-  hidden rotation_2 0 1 0 1.1899859790778036
-  translation 1.125 1.25 0
-  rotation 0 0 1 1.5708
+  hidden position_0_0 3139.226473547596
+  hidden position_0_1 2937.631000344287
+  hidden linearVelocity_0 -3.1429871133184025e-15 2.0798973519549695e-15 2.7000623958883807e-15
+  hidden angularVelocity_0 -1.9909056099268126e-16 -3.40355623908553e-14 2.564979028649698e-14
+  hidden rotation_1 0 -1 0 2.3661800421972234
+  hidden linearVelocity_1 -2.1886951149989133e-15 5.354122881455759e-18 -1.7761808577843016e-16
+  hidden angularVelocity_1 -1.9954901765289166e-16 -1.2007607669224486e-13 2.5997487445738765e-14
+  hidden rotation_2 0 -1 0 2.8997234157596674
+  hidden linearVelocity_2 -4.438455355221976e-15 -4.279620743173831e-18 -8.881603358935276e-16
+  hidden angularVelocity_2 -1.974720620918724e-16 -4.809051920881608e-13 2.6094707682488566e-14
+  translation 1.125000000050195 1.25000000000256 -7.456395788628736e-06
+  rotation -1.4847360336120197e-09 -1.4762299370831725e-09 0.9999999999999999 1.570799996402395
   controller "my_floodfill_02"
   turretSlot [
     InertialUnit {
@@ -274,10 +285,15 @@ DEF themaze maze {
       name "maze_wall(41)"
     }
     maze_wall {
-      translation 1.9549999999999998 1.875 0.05
-      size 0.1 0.01 0.1
+      translation 1.955 1.8725 0.05
+      size 0.1 0.005 0.1
       name "maze_wall(42)"
       baseColor 1 0 0
+    }
+    maze_wall {
+      translation 1.955 1.8775 0.05
+      size 0.1 0.005 0.1
+      name "maze_wall(135)"
     }
     maze_wall {
       translation 2.375 1.875 0.05
@@ -462,10 +478,15 @@ DEF themaze maze {
       name "maze_wall(74)"
     }
     maze_wall {
-      translation 2.205 1.125 0.05
-      size 0.1 0.01 0.1
+      translation 2.205 1.1225 0.05
+      size 0.1 0.005 0.1
       name "maze_wall(75)"
       baseColor 0.6470588235294118 0.4117647058823529 0.11764705882352941
+    }
+    maze_wall {
+      translation 2.205 1.1275 0.05
+      size 0.1 0.005 0.1
+      name "maze_wall(133)"
     }
     maze_wall {
       translation 2.375 1.125 0.05
@@ -520,8 +541,8 @@ DEF themaze maze {
       name "maze_wall(84)"
     }
     maze_wall {
-      translation 0.625 1.125 0.05
-      size 0.1 0.01 0.1
+      translation 0.625 1.1225 0.05
+      size 0.1 0.005 0.1
       name "maze_wall(85)"
       baseColor 0 1 0
     }
@@ -546,10 +567,15 @@ DEF themaze maze {
       name "maze_wall(89)"
     }
     maze_wall {
-      translation 1.8 0.875 0.05
-      size 0.1 0.01 0.1
+      translation 1.8 0.8725 0.05
+      size 0.1 0.005 0.1
       name "maze_wall(90)"
       baseColor 1 0 1
+    }
+    maze_wall {
+      translation 1.8 0.8775 0.05
+      size 0.1 0.005 0.1
+      name "maze_wall(132)"
     }
     maze_wall {
       translation 1.8887500000000002 0.875 0.05
@@ -740,10 +766,15 @@ DEF themaze maze {
       name "maze_wall(124)"
     }
     maze_wall {
-      translation 1.3 0.125 0.05
-      size 0.1 0.01 0.1
+      translation 1.3 0.1275 0.05
+      size 0.1 0.005 0.1
       name "maze_wall(125)"
       baseColor 1 1 0
+    }
+    maze_wall {
+      translation 1.3 0.1225 0.05
+      size 0.1 0.005 0.1
+      name "maze_wall(134)"
     }
     maze_wall {
       translation 1.3887500000000002 0.125 0.05
