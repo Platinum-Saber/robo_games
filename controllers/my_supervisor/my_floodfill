@@ -1,32 +1,16 @@
+actualMaze = []
+
+with open("../maze.txt", "r") as actualMazeFile:
+    for line in actualMazeFile:
+        actualMaze.append(line.rstrip("\n"))
+
 mazeSize = 10
-actualMaze = [
-    "o---o---o---o---o---o---o---o---o---o---o",
-    "|   |                       |           |",
-    "o   o   o---o---o---o---o   o   o---o   o",
-    "|       |       |           |   |       |",
-    "o   o---o   o   o   o---o   o   o   o---o",
-    "|   |   |   |       |           |       |",
-    "o   o   o   o---o---o---o---o--Ro   o---o",
-    "|   |       |       |           |       |",
-    "o   o---o   o   o   o   o---o   o   o   o",
-    "|   |       |   |       |       |   |   |",
-    "o   o   o   o   o---o---o   o   o   o   o",
-    "|   |   |   |   |           |       |   |",
-    "o   o   o---o   o   o---o---o   o--Bo---o",
-    "|   |   |       |       |   |           |",
-    "o-G-o   o   o---o---o---o   oP--o---o   o",
-    "|       |               |               |",
-    "o   o---o---o---o---o   o---o---o   o---o",
-    "|       |       |   |   |       |   |   |",
-    "o---o   o   o   o   o   o   o   o   o   o",
-    "|           |       |   |   |           |",
-    "o---o---o---o---o---oY--o---o---o---o---o"
-]
+
 openMaze = []
 
 openMaze.append([1] + [1, 1] * mazeSize)
 for i in range(mazeSize - 1):
-    openMaze.append([1] + [0, 0] * mazeSize)
+    openMaze.append([1] + [0, 0] * (mazeSize - 1) + [0, 1])
     openMaze.append([1] + [0, 1] * mazeSize)
 openMaze.append([1] + [0, 0] * mazeSize)
 openMaze.append([1] + [1, 1] * mazeSize)
@@ -59,9 +43,9 @@ def floodfill(destination):
     return manhattanDistanceMatrix
 
 def nextCell(currentCell, destination):
+    # printMatrix(openMaze)
     currentX, currentY = currentCell
     openMazeX, openMazeY = 2 * currentX + 1, 2 * currentY + 1
-    actualMazeX, actualMazeY = 4 * currentX + 2, 2 * currentY + 1
     
     manhattanDistanceMatrix = floodfill(destination)
     currentManhattanDistance = manhattanDistanceMatrix[currentY][currentX]
@@ -138,7 +122,6 @@ while True:
     toCell = nextCell(fromCell, destination)
     print ("NOW IN", fromCell, "TRYING TO GO TO", toCell)
     toDirection = getCellDirection(fromCell, toCell)
-    # print ("TRYING TO GO TO", toCell, ", toDirection", toDirection)
     turn(direction, toDirection)
     direction = toDirection
     
