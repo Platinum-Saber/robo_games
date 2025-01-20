@@ -11,9 +11,7 @@ pink_cell = (7, 7)
 brown_cell = (8, 6)
 green_cell = (2, 6)
 
-dest_coords = [start, red_cell, yellow_cell, pink_cell, brown_cell, green_cell]
-
-
+dest_coords = [[start, red_cell, yellow_cell, pink_cell, brown_cell, green_cell], [0, N, S, N, N, N]]
 
 # class PIDController:
 #     def __init__(self, K_P, K_I, K_D):
@@ -261,10 +259,9 @@ linear_dist = 256
 camera_1 = suhan.getDevice('camera')
 camera_1.enable(timestep)
 
-
-for dest in range(len(dest_coords)-1):
-    fromCell = dest_coords[dest]
-    destination = dest_coords[dest+1]
+for dest in range(len(dest_coords[0]) - 1):
+    fromCell = dest_coords[0][dest]
+    destination = dest_coords[0][dest + 1]
     
     while stepAndUpdatePose() != -1:
         currentX, currentY = fromCell
@@ -274,6 +271,10 @@ for dest in range(len(dest_coords)-1):
         actualMaze[actualMazeY] = string[:actualMazeX] + "X" + string[actualMazeX + 1:]
         if (fromCell == destination):
             print ("REACHED.")
+            faceDirection = dest_coords[1][dest + 1]
+            turn(direction, faceDirection)
+            print ("TURNED TOWARDS COLOR")
+            direction = faceDirection
             for row in actualMaze:
                 print (row)
             printMatrix(openMaze)
