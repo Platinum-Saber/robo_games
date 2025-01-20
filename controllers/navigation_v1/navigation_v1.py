@@ -19,7 +19,7 @@ camera_1 = robot.getDevice('camera')
 camera_1.enable(timestep) 
 
 #for colour in color_coords:
-maze_numbering((7,1))
+maze_numbering((7,2))
 printmaze()
 while(maze_vals[robot_coords[1]][robot_coords[0]] != 0):
     next_dir = find_dir((robot_coords[0],robot_coords[1]))
