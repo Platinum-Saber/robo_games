@@ -68,7 +68,7 @@ robo_games/
 ## Additional Resources
 
 - [Webots Documentation](https://cyberbotics.com/doc/guide/index)
-- [Kobuki Documentation]([http://kobuki.yujinrobot.com](https://kobuki.readthedocs.io/_/downloads/en/stable/pdf/))
+- [Kobuki Documentation](https://kobuki.readthedocs.io/_/downloads/en/stable/pdf/)
 - [OpenCV Documentation](https://opencv.org/)
 
 ---
