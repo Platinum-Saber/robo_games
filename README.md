@@ -85,4 +85,3 @@ This project is licensed under the MIT License.
 
 ---
 
-_Results are limited to the top 10 matches. To view more files or details, use [GitHub code search](https://github.com/Platinum-Saber/robo_games/search)._
